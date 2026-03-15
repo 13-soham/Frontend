@@ -1,9 +1,77 @@
-import React from 'react'
+import axios from "axios";
+import { useState } from "react";
 
 const Login = () => {
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+
+  const [Alldata, setAlldata] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault(); // prevents page reload
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/login",
+        { email : Email , password : Password },
+        { withCredentials: true }
+      );
+      console.log(res.data);
+      // setAlldata(res.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
-    <div>Login</div>
-  )
-}
+    <div className="flex justify-center my-15">
+      <form
+        onSubmit={submitHandler} // submitHandler now triggers correctly
+        className="fieldset bg-[#dcbd30] border-base-300 rounded-box w-xs border p-5 flex flex-col gap-4"
+      >
+        <h2 className="fieldset-legend text-3xl font-extrabold font-[poppins] text-amber-950 mx-auto">
+          Login
+        </h2>
+
+        {/* Email Field */}
+        <label htmlFor="email" className="label text-lg font-[poppins] text-amber-950">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={Email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          className="input focus:outline-none focus:ring-0 focus:ring-offset-0"
+          required
+        />
+
+        {/* Password Field */}
+        <label htmlFor="password" className="label text-lg font-[poppins] text-amber-950">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={Password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="input focus:outline-none focus:ring-0 focus:ring-offset-0"
+          required
+        />
+
+        {/* Submit Button */}
+        <button
+          type="submit" // ensures form submit triggers submitHandler
+          className="btn btn-neutral h-13 mt-4 text-lg"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default Login;
