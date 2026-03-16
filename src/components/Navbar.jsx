@@ -1,19 +1,23 @@
 import { BsChatHeart } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+    const user = useSelector((state) => state.user);
+    console.log(user);
     return (
         <div className="navbar bg-base-300 shadow-sm px-10 py-7">
             <div className="flex-1 flex">
                 <a className="btn btn-ghost text-3xl text-yellow-400 border-2 -mx-3">Amble</a>
                 <BsChatHeart className="text-2xl text-red-400" />
             </div>
-            <div className="flex gap-2">
+            {user && <div className="flex gap-2">
+                <p className="my-auto mr-5 text-lg">Hi, {user.firstName}</p>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar h-16 w-16">
                         <div className="w-20 rounded-full">
                             <img
                                 alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                src={user.photoUrl} />
                         </div>
                     </div>
                     <ul
@@ -29,7 +33,7 @@ const Navbar = () => {
                         <li><a>Logout</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }
