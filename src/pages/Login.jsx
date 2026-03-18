@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addUser } from "../Redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constraints";
+import { BsFillHeartbreakFill } from "react-icons/bs";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState("sen007@gmail.com");
+  const [Password, setPassword] = useState("Kaju@123");
+  const [Error, setError] = useState("");
   const navigate = useNavigate();
 
 
@@ -17,12 +19,13 @@ const Login = () => {
     try {
       const res = await axios.post(
         BASE_URL + "/login",
-        { email : Email , password : Password },
+        { email: Email, password: Password },
         { withCredentials: true }
       );
       dispatch(addUser(res.data.user));
       navigate("/");
     } catch (err) {
+      setError(err?.response?.data?.message || "something went wrong");
       console.log(err.message);
     }
   };
@@ -74,6 +77,10 @@ const Login = () => {
         >
           Login
         </button>
+        {Error && <div className="flex items-center justify-center gap-2">
+          <BsFillHeartbreakFill className="text-red-700 text-lg mt-1"/>
+          <p className="text-red-700 text-lg">{Error}</p>
+        </div>}
       </form>
     </div>
   );
