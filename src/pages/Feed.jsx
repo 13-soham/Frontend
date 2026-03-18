@@ -8,8 +8,10 @@ import { useEffect } from 'react';
 const Feed = () => {
   const dispatch = useDispatch();
   const feedData = useSelector((store) => store.feed);
+  const user = useSelector((store) => store.user);
+
   async function handleFeed(){
-    if(feedData) return;
+    // if(feedData) return;
     try {
       const res = await axios.get(BASE_URL + "/user/feed", { withCredentials : true });
       dispatch(storeUser(res.data.feedUsers));
@@ -20,9 +22,9 @@ const Feed = () => {
 
   useEffect(()=>{
     handleFeed();
-  }, []);
+  }, [user]);
 
-  console.log(feedData)
+  console.log(feedData);
 
   return (
     <div>
