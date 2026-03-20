@@ -3,6 +3,7 @@ import React from 'react'
 const FeedCard = ({ user }) => {
 
     const tempImage = "https://plus.unsplash.com/premium_vector-1682269282372-6d888f3451f1?q=80&w=800";
+    console.log(user);
 
     function onLike() { }
     function onIgnore() { }
@@ -17,7 +18,7 @@ const FeedCard = ({ user }) => {
                 {/* SECTION 1 — full-cover image + name overlay */}
                 <div className="relative h-[65vh] max-h-155 min-h-110">
                     <img
-                        src={user.image ? user.image : tempImage}
+                        src={user.photoUrl ? user.photoUrl : tempImage}
                         alt={user.firstName}
                         className="absolute inset-0 w-full h-full object-cover object-top"
                     />
