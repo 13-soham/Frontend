@@ -2,7 +2,7 @@ import { BsChatHeart } from "react-icons/bs";
 
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-base-300 text-neutral-content items-center px-10 py-7  fixed bottom-0">
+        <footer className="footer h-20 sm:footer-horizontal bg-base-300 text-neutral-content items-center px-10 py-7 fixed bottom-0">
             <aside className="flex items-center gap-10">
                 <div className="flex gap-2">
                     <h1 className="text-3xl font-bold text-yellow-400">Amble</h1>

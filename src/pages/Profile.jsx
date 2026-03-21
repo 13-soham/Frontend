@@ -70,11 +70,11 @@ const Profile = () => {
   }
 
   return (
-    <div className='flex justify-center gap-10 px-6 py-8 flex-wrap'>
+    <div className='flex justify-center gap-15 px-6 py-8 flex-wrap'>
 
       {/* Preview Card */}
-      <div className="self-start rounded-3xl overflow-hidden border border-[#222] bg-base-300" style={{ width: '280px' }}>
-        <div className="w-full h-64 overflow-hidden">
+      <div className="self-start rounded-3xl overflow-hidden border border-[#222] bg-base-300" style={{ width: '320px' }}>
+        <div className="w-full h-72 overflow-hidden">
           <img
             src={PhotoUrl || "https://plus.unsplash.com/premium_vector-1682269282372-6d888f3451f1?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
             alt="picture"
@@ -193,7 +193,7 @@ const Profile = () => {
                 "sleep", "dancing", "movie", "yoga", "laughing",
                 "coding", "Gen-Z", "marry", "swimming", "chess",
                 "singing", "chelsea", "gossip", "love", "fighting",
-                "business", "studying", "farming", "csk", "football", "others"
+                "business", "studying", "farming", "csk", "football", "anime", "others"
               ].map((elem) => (
                 <label
                   key={elem}

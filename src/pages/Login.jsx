@@ -2,9 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { addUser } from "../Redux/features/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constraints";
 import { BsFillHeartbreakFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,17 +32,17 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-15">
+    <div className="flex justify-center my-17">
       <form
         onSubmit={submitHandler} // submitHandler now triggers correctly
-        className="fieldset bg-[#dcbd30] border-base-300 rounded-box w-xs border p-5 flex flex-col gap-4"
+        className="fieldset bg-[#dcbd30] border-base-300 rounded-box w-xs border pt-7 pb-7 p-5 flex flex-col gap-4"
       >
         <h2 className="fieldset-legend text-3xl font-extrabold font-[poppins] text-amber-950 mx-auto">
           Login
         </h2>
 
         {/* Email Field */}
-        <label htmlFor="email" className="label text-lg font-[poppins] text-amber-950">
+        <label htmlFor="email" className="label text-lg font-[poppins] font-bold text-amber-950">
           Email
         </label>
         <input
@@ -56,7 +57,7 @@ const Login = () => {
         />
 
         {/* Password Field */}
-        <label htmlFor="password" className="label text-lg font-[poppins] text-amber-950">
+        <label htmlFor="password" className="label text-lg font-[poppins] font-bold text-amber-950">
           Password
         </label>
         <input
@@ -77,10 +78,8 @@ const Login = () => {
         >
           Login
         </button>
-        {Error && <div className="flex items-center justify-center gap-2">
-          <BsFillHeartbreakFill className="text-red-700 text-lg mt-1"/>
-          <p className="text-red-700 text-lg">{Error}</p>
-        </div>}
+        {Error && toast.error(Error)}
+        <p className="text-[14px] font-bold text-black mx-auto">New Here? <Link to="/signup" className="text-blue-700 text-lg underline">Signup</Link> </p>
       </form>
     </div>
   );
