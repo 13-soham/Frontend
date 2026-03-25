@@ -50,6 +50,7 @@ const Navbar = () => {
                                 <span className="badge">New</span>
                             </Link>
                         </li>
+                        <li><Link to="/pendingReq">Pending Request</Link></li>
                         <li><a>Settings</a></li>
                         <li>
                             <a onClick={()=>{

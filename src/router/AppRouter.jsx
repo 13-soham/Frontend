@@ -5,6 +5,7 @@ import Profile from '../pages/Profile';
 import Feed from '../pages/Feed';
 import Signup from '../pages/Signup';
 import Connections from '../pages/Connections';
+import PendingReq from '../pages/PendingReq';
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/profile' element={<Profile/>}/>
                 <Route path='/connections' element={<Connections/>}/>
+                <Route path='/pendingReq' element={<PendingReq/>}/>
             </Route>
         </Routes>
     </div>

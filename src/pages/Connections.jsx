@@ -57,6 +57,7 @@ const Connections = () => {
                                 <RxCross2 className='text-red-500' />
                             </button> */}
                         </li>
+                        <div className="h-1 bg-[#222]" />
                     </div>
                 })}
             </ul>
