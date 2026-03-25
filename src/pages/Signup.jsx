@@ -26,10 +26,10 @@ const Signup = () => {
   const navigate = useNavigate();
 
   async function handleSubmit() {
-    // e.preventDefault();  no need of that here
+    // e.preventDefault(); 
 
     try {
-      const formData = new FormData();   // changed
+      const formData = new FormData();  
       formData.append("firstName", Name);
       formData.append("lastName", Surname);
       formData.append("email", Email);

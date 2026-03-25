@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Feed from '../pages/Feed';
 import Signup from '../pages/Signup';
+import Connections from '../pages/Connections';
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<Signup/>}/>
                 <Route path='/profile' element={<Profile/>}/>
+                <Route path='/connections' element={<Connections/>}/>
             </Route>
         </Routes>
     </div>

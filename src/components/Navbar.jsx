@@ -31,6 +31,7 @@ const Navbar = () => {
                 <BsChatHeart className="text-2xl text-red-400" />
             </div>
             {user && <div className="flex gap-2">
+                <p className="my-auto mr-5 text-lg hover:bg-base-100 p-3 rounded-lg"><Link to="/connections">Connections</Link></p>
                 <p className="my-auto mr-5 text-lg">Hi, {user.firstName}</p>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar h-16 w-16">
