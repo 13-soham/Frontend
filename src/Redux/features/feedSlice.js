@@ -6,9 +6,13 @@ const feedSlice = createSlice({
     reducers : {
         storeUser : (state, action)=>{
             return action.payload;
+        },
+
+        resetFeed : (state, action)=>{
+            return null;
         }
     }
 });
 
-export const { storeUser } = feedSlice.actions;
+export const { storeUser, resetFeed } = feedSlice.actions;
 export default feedSlice.reducer;

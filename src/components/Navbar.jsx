@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constraints";
 import { removeUser } from "../Redux/features/userSlice";
+import { resetFeed } from "../Redux/features/feedSlice";
+import { resetConnections } from "../Redux/features/connections";
+import { resetReq } from "../Redux/features/pendingReq";
 
 const Navbar = () => {
     const user = useSelector((state) => state.user);
@@ -19,6 +22,9 @@ const Navbar = () => {
 
             // console.log("logged out");
             dispatch(removeUser());
+            dispatch(resetFeed());
+            dispatch(resetConnections());
+            dispatch(resetReq());
             return navigate("/login");
         } catch (err) {
             console.log(err.message);

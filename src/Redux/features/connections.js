@@ -12,12 +12,12 @@ const connectionsSlice = createSlice({
             return state.filter((elem)=> elem.id !== actions.payload.id)
         },
 
-        removeCollections : ()=>{
+        resetConnections : ()=>{
             return [];
         }
     }
 });
 
 
-export const { addConnections, deleteConnections, removeCollections } = connectionsSlice.actions;
+export const { addConnections, deleteConnections, resetConnections } = connectionsSlice.actions;
 export default connectionsSlice.reducer;
