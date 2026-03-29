@@ -27,6 +27,7 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       setError(err?.response?.data?.message || "something went wrong");
+      toast.error(err?.response?.data?.message || "something went wrong");
       console.log(err.message);
     }
   };
@@ -78,7 +79,6 @@ const Login = () => {
         >
           Login
         </button>
-        {Error && toast.error(Error)}
         <p className="text-[14px] font-bold text-black mx-auto">New Here? <Link to="/signup" className="text-blue-700 text-lg underline">Signup</Link> </p>
       </form>
     </div>

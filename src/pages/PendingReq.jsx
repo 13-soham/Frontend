@@ -10,8 +10,8 @@ const PendingReq = () => {
     async function pendingReq() {
         try {
             const res = await axios.get(BASE_URL + "/user/request/received", { withCredentials: true });
-            dispatch(addReq(res?.data?.pendingReq || []));
-            console.log(res?.data?.pendingReq || []);
+            dispatch(addReq(res?.data?.filteredReq || []));
+            console.log(res?.data?.filteredReq || []);
         } catch (err) {
             console.log(err.message)
         }

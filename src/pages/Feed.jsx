@@ -24,7 +24,12 @@ const Feed = () => {
     handleFeed();
   }, [user]);
 
-  console.log(feedData);
+  // console.log(feedData);
+
+  if(!feedData) return;
+  if(feedData.length <= 0){
+    return <h1 className='text-center text-3xl font-bold my-10'>No more user's found.</h1>
+  }
 
   return (
     <div>

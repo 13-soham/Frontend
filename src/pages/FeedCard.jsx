@@ -1,16 +1,39 @@
-import React from 'react'
+import axios from 'axios';
+import { useState } from 'react'
+import { BASE_URL } from '../utils/constraints';
+import { useDispatch } from 'react-redux';
+import { removeUserFeed } from '../Redux/features/feedSlice';
 
 const FeedCard = ({ user }) => {
 
     const tempImage = "https://plus.unsplash.com/premium_vector-1682269282372-6d888f3451f1?q=80&w=800";
-    console.log(user);
 
-    function onLike() { }
-    function onIgnore() { }
-    
+    const dispatch = useDispatch();
+    const [swipe, setSwipe] = useState(null); 
+
+    async function userSwipe(status, userId) {
+        try {
+            const res = await axios.post(BASE_URL + "/request/send/" + status + "/" + userId,
+                {},
+                { withCredentials: true }
+            );
+
+            dispatch(removeUserFeed(userId));
+            setSwipe(null);
+
+            console.log(res.data);
+        } catch (err) {
+            console.log(err.message);
+            setSwipe(null);
+        }
+    }
+
 
     return (
-        <div className="relative rounded-3xl overflow-hidden mx-auto my-6 w-full border border-[#222] bg-[#111] h-[65vh] max-h-155 min-h-110 max-w-110">
+        <div className={`relative rounded-3xl overflow-hidden mx-auto my-6 w-full border border-[#222] bg-[#111] h-[65vh] max-h-155 min-h-110 max-w-110 transition-all duration-300
+            ${swipe === "right" ? "translate-x-[80%] rotate-12 opacity-0" : ""}
+            ${swipe === "left" ? "-translate-x-[80%] -rotate-12 opacity-0" : ""}
+        `}>
 
             {/* Scrollable content */}
             <div className="h-full overflow-y-auto pb-24 [scrollbar-width:none] [-ms-overflow-style:none]">
@@ -94,7 +117,10 @@ const FeedCard = ({ user }) => {
             {/* Sticky 2-button bar */}
             <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center gap-8 px-6 pt-3 pb-5 z-10 bg-linear-to-t from-[#111] via-[#111]/80 to-transparent">
                 <button
-                    onClick={onIgnore}
+                    onClick={()=>{
+                        setSwipe("left"); 
+                        setTimeout(() => userSwipe("ignored", user._id), 300);  
+                    }}
                     className="flex items-center justify-center w-14 h-14 rounded-full bg-[#1a1a1a] border-2 border-[#333] text-white text-[1.3rem] cursor-pointer transition-transform hover:scale-110 active:scale-95"
                     aria-label="Ignore"
                 >
@@ -102,7 +128,10 @@ const FeedCard = ({ user }) => {
                 </button>
 
                 <button
-                    onClick={onLike}
+                    onClick={()=>{
+                        setSwipe("right"); 
+                        setTimeout(() => userSwipe("interested", user._id), 300); 
+                    }}
                     className="flex items-center justify-center w-16 h-16 rounded-full bg-[#fed749] text-[#111] text-[1.6rem] cursor-pointer transition-transform hover:scale-110 active:scale-95 shadow-[0_0_24px_rgba(254,215,73,0.3)]"
                     aria-label="Like"
                 >

@@ -43,7 +43,7 @@ const Signup = () => {
       const res = await axios.post(BASE_URL + "/signup", formData, { withCredentials: true });
 
       toast.success("Profile Created successfully");
-      dispatch(addUser(res?.data?.user));
+      // dispatch(addUser(res?.data?.user));
       navigate("/login");
 
     } catch (err) {
