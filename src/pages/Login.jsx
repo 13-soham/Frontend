@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [Email, setEmail] = useState("sen007@gmail.com");
-  const [Password, setPassword] = useState("Kaju@123");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
   const [Error, setError] = useState("");
   const navigate = useNavigate();
 
