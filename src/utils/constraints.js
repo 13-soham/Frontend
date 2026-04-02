@@ -1,1 +1,1 @@
-export const BASE_URL = "http://https://amble-backend.onrender.com";
+export const BASE_URL = "https://amble-backend.onrender.com";
